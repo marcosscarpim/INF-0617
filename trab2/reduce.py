@@ -5,19 +5,26 @@ import numpy as np
 # contains info of data used
 # ftp://ftp.ncdc.noaa.gov/pub/data/uscrn/products/hourly02/README.txt
 
-avg_temp = {}
+max_var = 0.0
+max_date = ""
+max_hour = ""
+max_lat = ""
+max_long = ""
 for line in sys.stdin:
 
-    hour, temp = line.split(",")
-    temp = float(temp)
+    date, hour, lat, long, min_temp, max_temp = line.split(",")
+    min_temp = float(min_temp)
+    max_temp = float(max_temp)
 
-    if hour in avg_temp.keys():
-        avg_temp[hour] = [avg_temp[hour][0] + temp , avg_temp[hour][1] + 1]
-    else:
-        avg_temp[hour] = [temp, 1]
+    var_temp = max_temp - min_temp
 
+    if max_var < var_temp:
+        max_var = var_temp
+        max_date = date
+        max_hour = hour
+        max_lat = lat
+        max_long = long
 
-for time in avg_temp:
-    print("TIME = "+time+" -----> "+ str(avg_temp[time][0]/avg_temp[time][1]))
+print(max_date+ " "+ max_hour+ ", ("+ max_lat+ ", "+ max_long+ "), "+ str(max_var))
 
 
