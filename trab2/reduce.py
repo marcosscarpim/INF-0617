@@ -1,5 +1,7 @@
 import sys
 import re
+from datetime import datetime
+
 import numpy as np
 
 # contains info of data used
@@ -25,6 +27,7 @@ for line in sys.stdin:
         max_lat = lat
         max_long = long
 
-print(max_date+ " "+ max_hour+ ", ("+ max_lat+ ", "+ max_long+ "), "+ str(max_var))
+max_date = datetime.strptime(max_date, "%Y%m%d").strftime("%Y-%m-%d")
+print(str(max_date)+ " "+ max_hour+ ", ("+ max_lat+ ", "+ max_long+ "), "+ str(max_var))
 
 
