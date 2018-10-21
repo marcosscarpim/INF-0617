@@ -2,9 +2,12 @@ import sys
 
 num_votos = {}
 for line in sys.stdin:
-    num_cand, qtde_votos = line.split(",")
-    num_cand = num_cand
-    qtde_votos = int(qtde_votos)
+    try:
+        num_cand, qtde_votos = line.split(",")
+        num_cand = num_cand
+        qtde_votos = int(qtde_votos)
+    except:
+        continue
 
     if num_cand in num_votos.keys():
         num_votos[num_cand] += qtde_votos
