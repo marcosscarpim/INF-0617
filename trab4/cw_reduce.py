@@ -1,8 +1,7 @@
 import os
 import sys
-import csv
 
-os.chdir("/home/liselene/Projects/ComplexData/INF-0617/trab4") 
+os.chdir("/tmp/data/") 
 
 counts = {}
 
@@ -19,10 +18,7 @@ for line in sys.stdin:
 
 words = sorted(counts, key=counts.get, reverse=True)
 
-with open('words.csv', mode='w') as words_file:
-    words_writer = csv.writer(words_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-
-    for word in  words[1:3000]:
-        words_writer.writerow([word,str(counts[word])])
-        #print(word+","+str(counts[word]))
-
+f = open('trab4/words.txt', mode='w')
+for word in  words[1:3001]:
+   f.write(word+'\n')
+f.close()

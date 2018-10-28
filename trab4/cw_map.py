@@ -2,17 +2,19 @@ import os
 import re
 
 # fix this in your computer
-os.chdir("/home/liselene/Projects/ComplexData/INF-0617/trab4/gut_test/")
+os.chdir("/tmp/data/gut_test/")
 
 def count_words(content):
     unique_words = set(content)
     for word in unique_words:
         count = content.count(word)
-        print(word,',',count)
+        print ("{0},{1}".format(word,count))
 
 def read_words(content):
     content = content.lower().replace('\'', '')
     p = re.compile('[0-9]')
+    content=p.sub('',content)
+    p=re.compile(r"_+")
     content=p.sub('',content)
     p = re.compile(r'\W+')
     content=p.sub(' ',content)

@@ -4,7 +4,7 @@ import csv
 import sys
 import operator
 
-os.chdir("/Users/marcos/Documents/UNICAMP/Curso - Mineracao/INF-0617/trab4/")
+os.chdir("/tmp/data/")
 
 
 def get_complexity(words, freq_words):
@@ -30,10 +30,10 @@ def read_words(content):
 
 # read words
 freq_words = []
-with open('words.csv', 'rt') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
-    for row in csv_reader:
-        freq_words += row[0].strip(' ')
+f = open('trab4/words.txt', 'r')
+lines = f.readlines()
+for line in lines:
+    freq_words += line
 
 author_complexity = {}
 for line in sys.stdin:
@@ -42,7 +42,7 @@ for line in sys.stdin:
         author = author_list[0]
         words = []
         for filename in author_list[1:]:
-            f = open("./gut_test/txt/" + filename, encoding="utf-8", errors="ignore")
+            f = open("gut/txt/" + filename, encoding="utf-8", errors="ignore")
             content = f.read()
             test = read_words(content)
             words += read_words(content)
