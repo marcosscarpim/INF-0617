@@ -1,23 +1,22 @@
 import os
 import re
-import time
 
 # fix this in your computer
 os.chdir("/home/liselene/Projects/ComplexData/INF-0617/trab4/gut_test/")
-#print(os.getcwd())
 
 def count_words(content):
     unique_words = set(content)
-
     for word in unique_words:
         count = content.count(word)
         print(word,',',count)
 
 def read_words(content):
-    content = content.lower().replace('\n', ' ')
+    content = content.lower().replace('\'', '')
     p = re.compile('[0-9]')
     content=p.sub('',content)
     p = re.compile(r'\W+')
+    content=p.sub(' ',content)
+    p = re.compile(r'\s+')
     words = p.split(content)
     return words
 
