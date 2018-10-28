@@ -2,7 +2,7 @@ import os
 import re
 import csv
 
-os.chdir("/tmp/data/gut_test/")
+os.chdir("/tmp/data/gut/")
 
 filenames = []
 for file in os.listdir("./txt"):

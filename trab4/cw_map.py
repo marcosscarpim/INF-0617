@@ -2,7 +2,7 @@ import os
 import re
 
 # fix this in your computer
-os.chdir("/tmp/data/gut_test/")
+os.chdir("/tmp/data/gut/")
 
 def count_words(content):
     unique_words = set(content)

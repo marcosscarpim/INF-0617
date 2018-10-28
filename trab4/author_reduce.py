@@ -30,7 +30,7 @@ def read_words(content):
 
 # read words
 freq_words = []
-f = open('trab4/words.txt', 'r')
+f = open('./trab4/words.txt', 'r')
 lines = f.readlines()
 for line in lines:
     freq_words += line
@@ -42,7 +42,7 @@ for line in sys.stdin:
         author = author_list[0]
         words = []
         for filename in author_list[1:]:
-            f = open("gut/txt/" + filename, encoding="utf-8", errors="ignore")
+            f = open("gut/txt/" + filename.strip('\t'),'r')
             content = f.read()
             test = read_words(content)
             words += read_words(content)
